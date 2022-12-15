@@ -39,9 +39,9 @@ class Feature extends BaseFeature
 		if ($value === '') {
 			throw new \InvalidArgumentException("Feature $name cannot be an empty string");
 		}
-		switch (BaseFeature::getType($name)) {
+		switch(BaseFeature::getType($name)) {
 			case BaseFeature::INTEGER:
-				if (!is_numeric($value)) {
+				if(!is_numeric($value)) {
 					throw new \InvalidArgumentException("Cannot cast feature $name to integer: $value is not numeric");
 				}
 				$value = (int) $value;
@@ -50,7 +50,7 @@ class Feature extends BaseFeature
 				}
 				break;
 			case BaseFeature::DOUBLE:
-				if (!is_numeric($value)) {
+				if (!is_numeric($value)){
 					throw new \InvalidArgumentException("Cannot cast feature $name to double: $value is not numeric");
 				}
 				$value = (double) $value;
