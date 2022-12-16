@@ -24,6 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Cache Composer dependencies
         uses: actions/cache@v3
@@ -40,10 +42,11 @@ jobs:
           php_version: "${{ matrix.php }}"
 
       - name: PHPCS linting
-        uses: thenabeel/action-phpcs@v8
+        uses: learath2/action-phpcs@v2
         with:
           standard: phpcs.xml
           files: "src/**,public/**,templates/**"
+          exclude: "**.min.css,**.js"
           phpcs_path: vendor/bin/phpcs
           fail_on_warnings: true
 
