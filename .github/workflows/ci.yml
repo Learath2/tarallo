@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        php: ['8.2', 'latest']
+        php: ['8.2']
 
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +36,7 @@ jobs:
         with:
           # If you use the PHPUnit action, uncomment this and comment php_extensions
           # args: --ignore-platform-reqs
-          php_extensions: json mysqlnd pdo zip
+          php_extensions: json mysqlnd pdo_mysql zip
           php_version: "${{ matrix.php }}"
 
       - name: Add checkstyle matchers for phpcs
