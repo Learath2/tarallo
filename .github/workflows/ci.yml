@@ -41,7 +41,7 @@ jobs:
           
       - name: Debug2
         run: |
-          cat ./docker-tag
+          cat ./docker_tag
 
       - name: Add checkstyle matchers for phpcs
         run: |
