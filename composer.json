@@ -12,11 +12,11 @@
   },
   "config": {
     "platform": {
-      "php": "7.4"
+      "php": "8.2"
     }
   },
   "require": {
-    "php": "^7.4",
+    "php": "^8.2",
     "ext-json": "*",
     "ext-mysqlnd": "*",
     "ext-pdo": "*",
@@ -26,8 +26,8 @@
     "relay/relay": "~2.0",
     "psr/http-message": "^1.0",
     "psr/http-server-middleware": "^1.0",
-    "laminas/laminas-diactoros": "^2.2",
-    "laminas/laminas-httphandlerrunner": "^1.1",
+    "laminas/laminas-diactoros": "^2.25",
+    "laminas/laminas-httphandlerrunner": "^2.6",
     "jumbojett/openid-connect-php": "^0.9.0",
     "mk-j/php_xlsxwriter": "^0.38.0"
   },
@@ -41,8 +41,10 @@
   },
   "scripts": {
     "lint": "phpcs --report=summary --ignore=*.min.css,*.js src public",
+    "lint_ci": "phpcs --report=checkstyle --ignore=*.min.css,*.js src public",
     "lintdetails": "phpcs --ignore=*.min.css,*.js src public",
     "lintfix": "phpcbf --ignore=*.min.css,*.js src public",
-    "test": "phpunit --configuration tests/phpunit.xml"
+    "test": "phpunit --configuration tests/phpunit.xml",
+    "test_ci": "@composer test -- --teamcity"
   }
 }

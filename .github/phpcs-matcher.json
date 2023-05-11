@@ -5,7 +5,7 @@
       "severity": "error",
       "pattern": [
         {
-          "regexp": "^<file name=\"(?:\\/github\\/workspace\\/)?(.*)\">$",
+          "regexp": "^<file name=\"(?:\\/github\\/workspace\\/|\\/app\\/)?(.*)\">$",
           "file": 1
         },
         {

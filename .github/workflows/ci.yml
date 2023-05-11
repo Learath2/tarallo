@@ -20,7 +20,7 @@ jobs:
 
     strategy:
       matrix:
-        php: ['7.4', '8.0', 'latest']
+        php: ['8.2', 'latest']
 
     steps:
       - uses: actions/checkout@v3
@@ -44,8 +44,9 @@ jobs:
           echo "::add-matcher::.github/phpcs-matcher.json"
 
       - name: PHPCS linting
-        run: |
-          composer lint
+        uses: php-actions/composer@v6
+        with:
+          command: lint_ci
 
       # sudo apt-get install mariadb-client
       # mysqladmin ping --user=root --password=root --host=127.0.0.1 --protocol=tcp --port=3306
@@ -63,6 +64,12 @@ jobs:
 #          sudo apt-get install gettext
 #          msgfmt resources/locale/en-US/LC_MESSAGES/messages.po --output-file=resources/locale/en-US/LC_MESSAGES/messages.mo
 
-      # --coverage-text
-      - name: PHPUnit Tests
-        run: composer test
+      - name: Configure matchers
+        uses: mheap/phpunit-matcher-action@v1
+        with:
+          base_path: /app
+
+      - name: PHPCS linting
+        uses: php-actions/composer@v6
+        with:
+          command: test_ci

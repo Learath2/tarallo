@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-alpine
+FROM php:8.2-fpm-alpine
 
 ARG XDEBUG
 ARG PROFILER
@@ -9,9 +9,8 @@ ENV XDEBUG=${XDEBUG}
 ENV PROFILER=${PROFILER}
 ENV DEVELOPMENT=${DEVELOPMENT}
 
-RUN docker-php-ext-install pdo_mysql
 RUN apk add libzip-dev
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install pdo_mysql zip
 
 # Create server root directory and enter it
 RUN mkdir -p /var/www/html
