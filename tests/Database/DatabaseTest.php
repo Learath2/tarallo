@@ -39,6 +39,7 @@ abstract class DatabaseTest extends TestCase {
 				$started = true;
 				break;
 			} catch(\PDOException $e) {
+				fwrite(STDERR, $e->getMessage());
 				$retries++;
 				sleep(1);
 			}
