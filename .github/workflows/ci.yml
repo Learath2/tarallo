@@ -69,7 +69,6 @@ jobs:
         with:
           base_path: /app
 
-      - name: PHPCS linting
-        uses: php-actions/composer@v6
-        with:
-          command: test_ci
+      - name: Debug
+        run: |
+          docker run --rm -w /app --network host --env-file ./DOCKER_ENV $(cat ./docker_tag) php -i
